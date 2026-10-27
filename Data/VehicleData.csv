@@ -1,0 +1,2 @@
+TestCase,make,model,enginePerformance,dateOfManufacture,numberOfSeats,rightHandDrive,fuelType,listPrice,licensePlateNumber,annualMileage
+TS001001,Audi,A3,110,01/15/2020,5,No,Petrol,20000,TEST123,10000
