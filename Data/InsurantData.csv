@@ -1,2 +1,3 @@
 TestCase,firstName,lastName,dateOfBirth,gender,streetAddress,country,zipCode,city,occupation,hobbies
-TS001002,Taylor,Example,05/20/1990,Female,123 Test Street,United States,90210,Los Angeles,Employee,Speeding-Bungee Jumping-Other
+"Enter customer details and proceed to price options",Taylor,Example,05/20/1990,Female,123 Test Street,United States,90210,Los Angeles,Employee,Speeding-Bungee Jumping-Other
+"Enter customer details and proceed to price options version 2",Morgan,Sample,08/14/1988,Male,456 Demo Avenue,United States,10001,New York,Employee,Speeding-Other

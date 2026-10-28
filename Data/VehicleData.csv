@@ -1,2 +1,3 @@
 TestCase,make,model,enginePerformance,dateOfManufacture,numberOfSeats,rightHandDrive,fuelType,listPrice,licensePlateNumber,annualMileage
-TS001001,Audi,A3,110,01/15/2020,5,No,Petrol,20000,TEST123,10000
+"Enter customer details and proceed to price options",Audi,A3,110,01/15/2020,5,No,Petrol,20000,TEST123,10000
+"Enter customer details and proceed to price options version 2",BMW,1 Series,150,06/10/2021,4,No,Diesel,25000,TEST456,12000

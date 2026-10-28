@@ -1,2 +1,3 @@
 TestCase,startDate,insuranceSum,meritRating,damageInsurance,courtesyCar,optionalProducts
-TS001002,01/01/2027,"3.000.000,00",Bonus 1,Full Coverage,Yes,Euro Protection-Legal Defense Insurance
+"Enter customer details and proceed to price options",01/01/2027,"3.000.000,00",Bonus 1,Full Coverage,Yes,Euro Protection-Legal Defense Insurance
+"Enter customer details and proceed to price options version 2",02/01/2027,"5.000.000,00",Bonus 2,Partial Coverage,No,Euro Protection

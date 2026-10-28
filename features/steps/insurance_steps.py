@@ -11,6 +11,11 @@ def _data_file(file_name: str) -> Path:
     return PROJECT_ROOT / "Data" / file_name
 
 
+@given('I use test data "{test_case}"')
+def select_test_data(context, test_case: str) -> None:
+    context.test_case = test_case
+
+
 @given("I am on the home page")
 def go_to_home_page(context) -> None:
     context.base_page.navigate("/")
@@ -29,7 +34,9 @@ def vehicle_fields_are_visible(context) -> None:
 
 @when('I enter the vehicle details from "{file_name}"')
 def enter_vehicle_details(context, file_name: str) -> None:
-    context.customer_business.enter_vehicle(read_vehicle_data(_data_file(file_name)))
+    context.customer_business.enter_vehicle(
+        read_vehicle_data(_data_file(file_name), context.test_case)
+    )
 
 
 @when("I go to Insurant Data")
@@ -40,7 +47,9 @@ def go_to_insurant_data(context) -> None:
 
 @when('I enter Insurant details from "{file_name}"')
 def enter_insurant_details(context, file_name: str) -> None:
-    context.customer_business.enter_insurant(read_insurant_data(_data_file(file_name)))
+    context.customer_business.enter_insurant(
+        read_insurant_data(_data_file(file_name), context.test_case)
+    )
 
 
 @when("I go to Product Data")
@@ -51,7 +60,9 @@ def go_to_product_data(context) -> None:
 
 @when('I enter Product details from "{file_name}"')
 def enter_product_details(context, file_name: str) -> None:
-    context.customer_business.enter_product(read_product_data(_data_file(file_name)))
+    context.customer_business.enter_product(
+        read_product_data(_data_file(file_name), context.test_case)
+    )
 
 
 @when("I go to Select Price option")

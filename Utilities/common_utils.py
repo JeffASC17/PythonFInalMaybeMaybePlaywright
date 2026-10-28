@@ -11,13 +11,18 @@ def required_value(row: CsvRow, key: str) -> str:
     return value
 
 
-def _first_record(file_path: str | Path) -> CsvRow:
+def _record_for_test_case(file_path: str | Path, test_case: str) -> CsvRow:
     records = read_csv(file_path)
-    return records[0]
+    matches = [record for record in records if record.get("TestCase") == test_case]
+    if not matches:
+        raise ValueError(f'Test case "{test_case}" was not found in {file_path}')
+    if len(matches) > 1:
+        raise ValueError(f'Test case "{test_case}" appears more than once in {file_path}')
+    return matches[0]
 
 
-def read_vehicle_data(file_path: str | Path) -> VehicleData:
-    row = _first_record(file_path)
+def read_vehicle_data(file_path: str | Path, test_case: str) -> VehicleData:
+    row = _record_for_test_case(file_path, test_case)
     return VehicleData(
         make=required_value(row, "make"),
         engine_performance=required_value(row, "enginePerformance"),
@@ -30,8 +35,8 @@ def read_vehicle_data(file_path: str | Path) -> VehicleData:
     )
 
 
-def read_insurant_data(file_path: str | Path) -> InsurantData:
-    row = _first_record(file_path)
+def read_insurant_data(file_path: str | Path, test_case: str) -> InsurantData:
+    row = _record_for_test_case(file_path, test_case)
     gender = required_value(row, "gender")
     if gender not in {"Male", "Female"}:
         raise ValueError(f"Unsupported insurant gender {gender!r}")
@@ -49,8 +54,8 @@ def read_insurant_data(file_path: str | Path) -> InsurantData:
     )
 
 
-def read_product_data(file_path: str | Path) -> ProductData:
-    row = _first_record(file_path)
+def read_product_data(file_path: str | Path, test_case: str) -> ProductData:
+    row = _record_for_test_case(file_path, test_case)
     return ProductData(
         start_date=required_value(row, "startDate"),
         insurance_sum=required_value(row, "insuranceSum"),
