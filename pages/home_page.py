@@ -10,10 +10,9 @@ class HomePage(BasePage):
         self,
         page: Page,
         base_url: str,
-        capture_screenshot: Callable[[str], None],
         write_log: Callable[[str], None],
     ) -> None:
-        super().__init__(page, base_url, capture_screenshot, write_log)
+        super().__init__(page, base_url, write_log)
         self.automobile_link = page.get_by_role("link", name="Automobile", exact=True)
 
     def open_automobile_quote(self) -> None:

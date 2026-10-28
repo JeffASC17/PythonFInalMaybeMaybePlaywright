@@ -10,10 +10,9 @@ class PriceOptionPage(BasePage):
         self,
         page: Page,
         base_url: str,
-        capture_screenshot: Callable[[str], None],
         write_log: Callable[[str], None],
     ) -> None:
-        super().__init__(page, base_url, capture_screenshot, write_log)
+        super().__init__(page, base_url, write_log)
         self.price_option_table = page.locator("#priceTable")
 
     @property

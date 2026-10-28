@@ -11,12 +11,11 @@ class BasePage:
         self,
         page: Page,
         base_url: str,
-        capture_screenshot: Callable[[str], None],
         write_log: Callable[[str], None],
     ) -> None:
         self.page = page
         self.base_url = base_url
-        self.browser_actions = BrowserActions(capture_screenshot, write_log)
+        self.browser_actions = BrowserActions(write_log)
 
     def navigate(self, path: str) -> None:
         self.page.goto(resolve_url(self.base_url, path), wait_until="domcontentloaded")

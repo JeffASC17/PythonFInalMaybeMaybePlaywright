@@ -31,9 +31,8 @@ def before_scenario(context, scenario) -> None:
     context.page = context.browser.new_page()
     context.page.set_default_timeout(30_000)
 
-    context.capture_screenshot = lambda name: _capture_screenshot(context, name)
     context.write_log = lambda message: _write_log(context, message)
-    page_args = (context.base_url, context.capture_screenshot, context.write_log)
+    page_args = (context.base_url, context.write_log)
     context.base_page = BasePage(context.page, *page_args)
     context.home_page = HomePage(context.page, *page_args)
     context.vehicle_page = VehiclePage(context.page, *page_args)
@@ -73,6 +72,11 @@ def after_scenario(context, scenario) -> None:
             context.browser.close()
         if getattr(context, "playwright", None):
             context.playwright.stop()
+
+
+def after_step(context, step) -> None:
+    if context.page and step.status.name != "skipped":
+        _capture_screenshot(context, step.name)
 
 
 def _capture_screenshot(context, action_name: str) -> None:

@@ -11,10 +11,9 @@ class InsurantPage(BasePage):
         self,
         page: Page,
         base_url: str,
-        capture_screenshot: Callable[[str], None],
         write_log: Callable[[str], None],
     ) -> None:
-        super().__init__(page, base_url, capture_screenshot, write_log)
+        super().__init__(page, base_url, write_log)
         self.first_name = page.locator("#firstname")
         self.last_name = page.locator("#lastname")
         self.birthdate = page.locator("#birthdate")
